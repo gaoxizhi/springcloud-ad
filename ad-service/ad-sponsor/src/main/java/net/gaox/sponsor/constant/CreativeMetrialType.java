@@ -1,0 +1,30 @@
+package net.gaox.sponsor.constant;
+
+import lombok.Getter;
+
+/**
+ * <p>  </p>
+ *
+ * @author gaox·Eric
+ * @site gaox.net
+ * @date 2019/12/18 20:23
+ */
+@Getter
+public enum CreativeMetrialType {
+
+    JPG(1, "jpg"),
+    BMP(2, "bmp"),
+
+    MP4(3, "mp4"),
+    AVI(4, "avi"),
+
+    TXT(5, "txt");
+
+    private int type;
+    private String desc;
+
+    CreativeMetrialType(int type, String desc) {
+        this.type = type;
+        this.desc = desc;
+    }
+}

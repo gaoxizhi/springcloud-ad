@@ -1,0 +1,19 @@
+server:
+  port: 13010
+spring:
+  application:
+    name: ad-gateway
+eureka:
+  client:
+    service-url:
+      defaultZone: http://ad-eureka:13000/eureka/
+
+zuul:
+  # 使用 prefix 添加前缀
+  prefix: /api/
+  routes:
+    sponsor:
+      path: /ad-sponsor/**
+      serviceId: eureka-client-ad-sponsor
+      # 是否过滤前缀【/ad-sponsor】
+      strip-prefix: false

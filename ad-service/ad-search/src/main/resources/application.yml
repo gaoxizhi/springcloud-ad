@@ -1,0 +1,55 @@
+server:
+  port: 13030
+  servlet:
+    context-path: /ad-search
+
+spring:
+  application:
+    name: eureka-client-ad-search
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate.format_sql: true
+    open-in-view: false
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/ad_system?autoReconnect=true&serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false&useUnicode=true
+    username: root
+    password: root
+    tomcat:
+      max-active: 4
+      min-idle: 2
+      initial-size: 2
+# 配置启动过后注册到Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://ad-eureka:13000/eureka/
+  security:
+    basic:
+      enabled: false
+
+
+feign:
+  hystrix:
+    enabled: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+adconf:
+  mysql:
+    host: 127.0.0.1
+    port: 3306
+    username: root
+    password: root
+    binlogName: ""
+    position: -1
+
+#  kafka:
+#    topic: ad-search-mysql-data

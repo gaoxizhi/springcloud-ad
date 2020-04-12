@@ -1,13 +1,18 @@
 package net.gaox.common.dump;
 
 /**
+ * <p> 索引数据目录&数据文件</p>
+ *
  * @author gaox·Eric
  * @site gaox.net
  * @date 2019/12/18 19:51
  */
-public class DConstant {
+public class DataConstant {
 
-    public static final String DATA_ROOT_DIR = "/Users/gaox/gitee/mysql_data/";
+    /**
+     * 数据存储目录
+     */
+    public static final String DATA_ROOT_DIR = "/Users/gaox/codeing/gitee/springcloud-ad/mysql_data/";
 
     /**
      * 各个表数据的存储文件名

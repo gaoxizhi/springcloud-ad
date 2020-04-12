@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import net.gaox.common.dump.table.AdUnitTable;
 import net.gaox.sponsor.constant.CommonStatus;
 
 import javax.persistence.*;
@@ -60,8 +61,7 @@ public class AdUnit {
     @Column(name = "update_time", nullable = false)
     private Date updateTime;
 
-    public AdUnit(Long planId, String unitName,
-                  Integer positionType, Long budget) {
+    public AdUnit(Long planId, String unitName, Integer positionType, Long budget) {
         this.planId = planId;
         this.unitName = unitName;
         this.unitStatus = CommonStatus.VALID.getStatus();
@@ -69,5 +69,14 @@ public class AdUnit {
         this.budget = budget;
         this.createTime = new Date();
         this.updateTime = this.createTime;
+    }
+
+    public AdUnitTable toAdUnitTable() {
+        return new AdUnitTable(
+                this.getId(),
+                this.getUnitStatus(),
+                this.getPositionType(),
+                this.getPlanId()
+        );
     }
 }

@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import net.gaox.common.dump.table.AdCreativeTable;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -87,4 +88,17 @@ public class Creative {
     @Basic
     @Column(name = "updateTime", nullable = false)
     private Date updateTime;
+
+    public AdCreativeTable toAdCreativeTable() {
+        return new AdCreativeTable(
+                this.getId(),
+                this.getName(),
+                this.getType(),
+                this.getMaterialType(),
+                this.getHeight(),
+                this.getWidth(),
+                this.getAuditStatus(),
+                this.getUrl()
+        );
+    }
 }

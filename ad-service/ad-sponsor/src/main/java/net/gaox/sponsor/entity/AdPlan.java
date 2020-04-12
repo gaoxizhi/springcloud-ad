@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import net.gaox.common.dump.table.AdPlanTable;
 import net.gaox.sponsor.constant.CommonStatus;
 
 import javax.persistence.*;
@@ -57,8 +58,7 @@ public class AdPlan {
     @Column(name = "update_time", nullable = false)
     private Date updateTime;
 
-    public AdPlan(Long userId, String planName,
-                  Date startDate, Date endDate) {
+    public AdPlan(Long userId, String planName, Date startDate, Date endDate) {
 
         this.userId = userId;
         this.planName = planName;
@@ -67,5 +67,15 @@ public class AdPlan {
         this.endDate = endDate;
         this.createTime = new Date();
         this.updateTime = this.createTime;
+    }
+
+    public AdPlanTable toAdPlanTable() {
+        return new AdPlanTable(
+                this.getId(),
+                this.getUserId(),
+                this.getPlanStatus(),
+                this.getStartDate(),
+                this.getEndDate()
+        );
     }
 }
